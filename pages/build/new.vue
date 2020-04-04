@@ -7,7 +7,7 @@
   <div class="Build">
     <!-- 标题 -->
     <div class="title">
-      添加 webhooks 服务器端代码
+      新建 webhooks 服务器
     </div>
     <!-- 步骤条 -->
     <a-steps :current="current">
@@ -16,7 +16,7 @@
     <!-- 内容 -->
     <div class="steps-content-bg">
       <!-- 表单 1 -->
-      <div class="from-content">
+      <div v-if="current === 0" class="from-content">
         <a-form
           :form="form"
           :label-col="{ span: 5 }"
@@ -91,12 +91,28 @@
         </a-form>
       </div>
       <!-- 代码显示 2 -->
-      <div class="show-code">
-        <pre>{{ code }}</pre>
+      <div v-if="current === 1" class="download">
+        <div class="download-title">
+          文件已生成 请点击下载
+        </div>
+        <a-button type="primary" @click="download"> {{ code }}↓ </a-button>
+      </div>
+      <!-- 服务器构建 -->
+
+      <div v-if="current === 2" class="server">
+        <p>将代码在服务器端进行解压</p>
+        <p>解压后进入文件夹</p>
+        <p>命令行执行 <span class="red">npm install</span> 安装依赖</p>
+        <p>命令行执行 <span class="red">node index.js</span> 启动服务</p>
+      </div>
+      <div v-if="current === 2" class="back-btn">
+        <a-button style="margin-left: 8px" @click="prev">
+          跳回首页
+        </a-button>
       </div>
     </div>
     <!-- 按钮 -->
-    <div class="steps-action">
+    <!-- <div class="steps-action">
       <a-button v-if="current < steps.length - 1" type="primary" @click="next">
         Next
       </a-button>
@@ -110,7 +126,7 @@
       <a-button v-if="current > 0" style="margin-left: 8px" @click="prev">
         Previous
       </a-button>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
@@ -120,7 +136,7 @@ export default {
     return {
       formLayout: 'horizontal',
       form: this.$form.createForm(this, { name: 'coordinated' }),
-      current: 0,
+      current: 2,
       code: null,
       steps: [
         {
@@ -143,32 +159,31 @@ export default {
       this.current++
     },
     prev() {
-      this.current--
+      this.$router.push('/')
     },
     handleSubmit(e) {
       e.preventDefault()
       this.form.validateFields(async (err, values) => {
         if (!err) {
-          values.new = true
-
           const code = await this.$axios.$post('/api/create', values)
+          console.log(code)
+
           this.code = code
           this.current++
         }
       })
     },
-    handleSelectChange(value) {
-      console.log(value)
-      this.form.setFieldsValue({
-        note: `Hi, ${value === 'male' ? 'man' : 'lady'}!`
-      })
+    download() {
+      //  下载文件
+      window.open(`/${this.code}`)
+      this.current++
     }
   }
 }
 </script>
 <style scoped lang="less">
 .Build {
-  width: 90%;
+  width: 80%;
   margin: 30px auto;
 
   // 标题
@@ -177,27 +192,56 @@ export default {
     margin-bottom: 30px;
   }
 
-  // 内容北京
+  // 内容背景
   .steps-content-bg {
     margin-top: 16px;
     border: 1px dashed #e9e9e9;
     border-radius: 6px;
     background-color: #fafafa;
     min-height: 200px;
+    height: 450px;
 
     .from-content {
       width: 700px;
-      margin-top: 20px;
-      margin: 20px auto;
+
+      margin: 40px auto;
     }
 
-    // 代码显示
-    .show-code {
+    // 文件下载
+    .download {
+      width: 300px;
+      margin: 40px auto;
+      text-align: center;
+
+      .download-title {
+        font-size: 20px;
+        margin: 40px auto;
+      }
+    }
+
+    .server {
+      width: 400px;
+      margin: 40px auto;
+
+      p {
+        font-size: 20px;
+      }
+    }
+
+    .back-btn {
+      height: 100px;
+      width: 100px;
+      margin-right: 20px;
+      margin-top: 120px;
+      float: right;
     }
   }
 
   .steps-action {
     margin-top: 24px;
   }
+}
+.red {
+  color: red;
 }
 </style>

@@ -14,13 +14,13 @@
       </h2>
       <div class="links">
         <nuxt-link
-          :to="{ path: '/build', query: { module: 'new' } }"
+          :to="{ path: '/build/new', query: { module: 'new' } }"
           class="button--green"
         >
           新建 webhooks 服务器
         </nuxt-link>
         <nuxt-link
-          :to="{ path: '/build', query: { module: 'add' } }"
+          :to="{ path: '/build/add', query: { module: 'add' } }"
           class="button--grey"
         >
           添加 webhooks 服务器端代码
