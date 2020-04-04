@@ -31,6 +31,7 @@ module.exports = {
     // 'ant-design-vue/dist/antd.css'
     // 按需引入ant-ui
     // './style/basic.less',
+    './style/animate.min.css', // 过渡动画
     'ant-design-vue/lib/button/style/css',
     'ant-design-vue/lib/steps/style/css',
     'ant-design-vue/lib/form/style/css',

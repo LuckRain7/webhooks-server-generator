@@ -50,3 +50,8 @@ layout:"basic"
 ## ZIP
 
 jszip使用
+
+
+## 过度动画  
+
+ <transition enter-active-class="animated fadeInLeft">

@@ -16,103 +16,107 @@
     <!-- 内容 -->
     <div class="steps-content-bg">
       <!-- 表单 1 -->
-      <div v-if="current === 0" class="from-content">
-        <a-form
-          :form="form"
-          :label-col="{ span: 5 }"
-          :wrapper-col="{ span: 12 }"
-          @submit="handleSubmit"
-        >
-          <a-form-item label="校验秘钥">
-            <a-input
-              v-decorator="[
-                'secret',
-                {
-                  rules: [{ required: true, message: '请填写校验秘钥!' }]
-                }
-              ]"
-              placeholder="填写协商校验秘钥"
-            />
-          </a-form-item>
+      <transition enter-active-class="animated fadeInLeft">
+        <div v-if="current === 0" class="from-content">
+          <a-form
+            :form="form"
+            :label-col="{ span: 5 }"
+            :wrapper-col="{ span: 12 }"
+            @submit="handleSubmit"
+          >
+            <a-form-item label="校验秘钥">
+              <a-input
+                v-decorator="[
+                  'secret',
+                  {
+                    rules: [{ required: true, message: '请填写校验秘钥!' }]
+                  }
+                ]"
+                placeholder="填写协商校验秘钥"
+              />
+            </a-form-item>
 
-          <a-form-item label="项目文件地址">
-            <a-input
-              v-decorator="[
-                'file',
-                {
-                  rules: [{ required: true, message: '请填写项目文件地址!' }]
-                }
-              ]"
-              placeholder="填写在服务器上的项目地址"
-            />
-          </a-form-item>
+            <a-form-item label="项目文件地址">
+              <a-input
+                v-decorator="[
+                  'file',
+                  {
+                    rules: [{ required: true, message: '请填写项目文件地址!' }]
+                  }
+                ]"
+                placeholder="填写在服务器上的项目地址"
+              />
+            </a-form-item>
 
-          <a-form-item label="CMD命令">
-            <a-input
-              v-decorator="[
-                'cmd',
-                {
-                  rules: [{ required: true, message: '请填写CMD命令' }]
-                }
-              ]"
-              placeholder="填写进入项目后执行的命令 用 & 进行分割"
-            />
-          </a-form-item>
+            <a-form-item label="CMD命令">
+              <a-input
+                v-decorator="[
+                  'cmd',
+                  {
+                    rules: [{ required: true, message: '请填写CMD命令' }]
+                  }
+                ]"
+                placeholder="填写进入项目后执行的命令 用 & 进行分割"
+              />
+            </a-form-item>
 
-          <a-form-item label="接受请求地址">
-            <a-input
-              v-decorator="[
-                'url',
-                {
-                  rules: [{ required: true, message: '请填写接受请求地址' }]
-                }
-              ]"
-              placeholder="填写接受请求地址"
-            />
-          </a-form-item>
+            <a-form-item label="接受请求地址">
+              <a-input
+                v-decorator="[
+                  'url',
+                  {
+                    rules: [{ required: true, message: '请填写接受请求地址' }]
+                  }
+                ]"
+                placeholder="填写接受请求地址"
+              />
+            </a-form-item>
 
-          <a-form-item label="端口号">
-            <a-input
-              v-decorator="[
-                'port',
-                {
-                  rules: [{ required: true, message: '请填写端口号' }]
-                }
-              ]"
-              placeholder="填写端口号"
-            />
-          </a-form-item>
+            <a-form-item label="端口号">
+              <a-input
+                v-decorator="[
+                  'port',
+                  {
+                    rules: [{ required: true, message: '请填写端口号' }]
+                  }
+                ]"
+                placeholder="填写端口号"
+              />
+            </a-form-item>
 
-          <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
-            <a-button type="primary" html-type="submit">
-              确定
-            </a-button>
-          </a-form-item>
-        </a-form>
-      </div>
-      <!-- 代码显示 2 -->
-      <div v-if="current === 1" class="download">
-        <div class="download-title">
-          文件已生成 请点击下载
+            <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
+              <a-button type="primary" html-type="submit">
+                确定
+              </a-button>
+            </a-form-item>
+          </a-form>
         </div>
-        <a-button type="primary" @click="download"> {{ code }}↓ </a-button>
-      </div>
+      </transition>
+      <!-- 代码显示 2 -->
+      <transition enter-active-class="animated fadeInLeft">
+        <!--         leave-active-class="animated fadeOutRight" -->
+        <div v-if="current === 1" class="download ">
+          <div class="download-title">
+            文件已生成 请点击下载
+          </div>
+          <a-button type="primary" @click="download"> {{ code }}↓ </a-button>
+        </div>
+      </transition>
       <!-- 服务器构建 -->
-
-      <div v-if="current === 2" class="server">
-        <p>将代码在服务器端进行解压</p>
-        <p>解压后进入文件夹</p>
-        <p>命令行执行 <span class="red">npm install</span> 安装依赖</p>
-        <p>命令行执行 <span class="red">node index.js</span> 启动服务</p>
-      </div>
-      <div v-if="current === 2" class="back-btn">
-        <a-button style="margin-left: 8px" @click="prev">
-          跳回首页
-        </a-button>
-      </div>
+      <transition enter-active-class="animated fadeInLeft">
+        <div v-if="current === 2" class="server ">
+          <p>将代码在服务器端进行解压</p>
+          <p>解压后进入文件夹</p>
+          <p>命令行执行 <span class="red">npm install</span> 安装依赖</p>
+          <p>命令行执行 <span class="red">node index.js</span> 启动服务</p>
+          <a-button style="margin-left: 8px" @click="back">
+            跳回首页
+          </a-button>
+        </div>
+      </transition>
     </div>
     <!-- 按钮 -->
-    <!-- <div class="steps-action">
+    <div class="steps-action">
       <a-button v-if="current < steps.length - 1" type="primary" @click="next">
         Next
       </a-button>
@@ -126,7 +130,7 @@
       <a-button v-if="current > 0" style="margin-left: 8px" @click="prev">
         Previous
       </a-button>
-    </div> -->
+    </div>
   </div>
 </template>
 <script>
@@ -136,7 +140,7 @@ export default {
     return {
       formLayout: 'horizontal',
       form: this.$form.createForm(this, { name: 'coordinated' }),
-      current: 2,
+      current: 0,
       code: null,
       steps: [
         {
@@ -158,8 +162,11 @@ export default {
     next() {
       this.current++
     },
-    prev() {
+    back() {
       this.$router.push('/')
+    },
+    prev() {
+      this.current--
     },
     handleSubmit(e) {
       e.preventDefault()
@@ -226,14 +233,12 @@ export default {
       p {
         font-size: 20px;
       }
-    }
 
-    .back-btn {
-      height: 100px;
-      width: 100px;
-      margin-right: 20px;
-      margin-top: 120px;
-      float: right;
+      button {
+        margin-top: 40px;
+        float: right;
+        margin-right: 20px;
+      }
     }
   }
 
