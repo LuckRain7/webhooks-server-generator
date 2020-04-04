@@ -1,15 +1,20 @@
 <!--
- * @Description:  默认布局样式
+ * @Description: 基础全屏模板
  * @Author: LuckRain7
- * @Date: 2020-04-04 11:04:02
+ * @Date: 2020-04-04 12:10:26
  -->
 <template>
-  <div>
+  <div id="Basic">
     <nuxt />
   </div>
 </template>
 
 <style>
+body,
+html {
+  height: 100%;
+  width: 100%;
+}
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -20,6 +25,13 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+}
+
+#__nuxt,
+#__layout,
+#Basic {
+  height: 100%;
+  width: 100%;
 }
 
 *,

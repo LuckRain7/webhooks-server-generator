@@ -18,3 +18,31 @@ $ yarn start
 # generate static project
 $ yarn generate
 ```
+
+## 配置 ui 按需加载
+
+配置插件按需引入
+
+配置 css 按需引入
+
+## 使用 less
+
+```bash
+yarn add less less-loader
+```
+
+## 路由
+
+路由跳转（用法和 vue-router 一致）
+
+```html
+<nuxt-link to="/">首页</nuxt-link>
+```
+
+## 模板视图
+
+layout:"basic"
+
+## html 标签
+
+<pre>{{ code }}</pre>

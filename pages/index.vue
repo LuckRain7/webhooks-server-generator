@@ -1,40 +1,38 @@
+<!--
+ * @Description: 欢迎页
+ * @Author: LuckRain7
+ * @Date: 2020-04-04 11:04:02
+ -->
 <template>
   <div class="container">
     <div>
-      <logo />
       <h1 class="title">
-        app
+        欢迎使用webhooks服务器端代码生成器
       </h1>
       <h2 class="subtitle">
-        My impeccable Nuxt.js project
+        webhooks-server-generator
       </h2>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
+        <nuxt-link
+          :to="{ path: '/build', query: { module: 'new' } }"
           class="button--green"
         >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
+          新建 webhooks 服务器
+        </nuxt-link>
+        <nuxt-link
+          :to="{ path: '/build', query: { module: 'add' } }"
           class="button--grey"
         >
-          GitHub
-        </a>
+          添加 webhooks 服务器端代码
+        </nuxt-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
-  }
+  components: {}
 }
 </script>
 
@@ -53,7 +51,7 @@ export default {
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
   font-weight: 300;
-  font-size: 100px;
+  font-size: 50px;
   color: #35495e;
   letter-spacing: 1px;
 }
