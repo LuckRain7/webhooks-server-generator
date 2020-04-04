@@ -7,6 +7,7 @@ const ejs = require('ejs')
 const Fs = require('fs')
 const fs = Fs.promises
 const path = require('path')
+const ZIP = require('jszip')
 
 // 提供路径读取函数
 const readFile = async (filePath) => {
@@ -48,12 +49,38 @@ const indexJs = async (data) => {
   }
 }
 
+async function createZIP() {
+  const zip = new ZIP()
+
+  // 读取文件内容
+  const packageJSON = await readFile(getFilePath('./package.ejs'))
+  const indexJS = await readFile(getFilePath('./index.ejs'))
+
+  // 创建文件并解压
+  zip.file('package.json', packageJSON)
+  zip.file('index.js', indexJS)
+  zip
+    .generateAsync({
+      type: 'nodebuffer', // node压缩类型
+      compressionOptions: {
+        level: 5 // 压缩级别
+      }
+    })
+    .then(async function(content) {
+      // 将压缩文件存储到静态文件中
+      await fs.writeFile(getFilePath('../../static/example.zip'), content)
+      return 1
+    })
+}
+
 const create = async (renderData) => {
   if (!Fs.existsSync(getFilePath('../list'))) {
     listMkdir()
   }
   await packageJson()
   const resultState = await indexJs(renderData)
+  await createZIP()
+  // 生成压缩包
   return resultState
 }
 
