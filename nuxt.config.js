@@ -25,7 +25,7 @@ module.exports = {
 
   // 全局css
   css: [
-    // './style/animate.min.css', // 过渡动画
+    './style/basic.less'
     // 'ant-design-vue/dist/antd.css'
     // 按需引入ant-ui
     // 'ant-design-vue/lib/button/style/css',

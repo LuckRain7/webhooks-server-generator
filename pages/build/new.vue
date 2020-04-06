@@ -5,6 +5,7 @@
  -->
 <template>
   <div class="Build">
+    <back></back>
     <!-- 标题 -->
     <div class="title">
       新建 webhooks 服务器
@@ -138,9 +139,12 @@ import 'ant-design-vue/lib/button/style/css'
 import 'ant-design-vue/lib/steps/style/css'
 import 'ant-design-vue/lib/form/style/css'
 import 'ant-design-vue/lib/input/style/css'
-
+import Back from '../../components/common/Back.vue'
 export default {
   layout: 'basic',
+  components: {
+    Back
+  },
   data() {
     return {
       formLayout: 'horizontal',
@@ -194,7 +198,7 @@ export default {
 }
 </script>
 <style scoped lang="less">
-// @import '../assets/css/main.css';
+@import '../../style/animate.css';
 
 .Build {
   width: 80%;
@@ -255,41 +259,5 @@ export default {
 }
 .red {
   color: red;
-}
-// 动画
-
-@-webkit-keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.fadeInLeft {
-  animation: fadeInLeft 1s infinite;
-  // /*Safari 和 Chrome:*/
-  -webkit-animation: fadeInLeft 1s infinite;
-  animation-iteration-count: 1; //动画次数 一次
 }
 </style>
