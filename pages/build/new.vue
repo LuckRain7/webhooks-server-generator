@@ -135,10 +135,10 @@
   </div>
 </template>
 <script>
-import 'ant-design-vue/lib/button/style/css'
-import 'ant-design-vue/lib/steps/style/css'
-import 'ant-design-vue/lib/form/style/css'
-import 'ant-design-vue/lib/input/style/css'
+// import 'ant-design-vue/lib/button/style/css'
+// import 'ant-design-vue/lib/steps/style/css'
+// import 'ant-design-vue/lib/form/style/css'
+// import 'ant-design-vue/lib/input/style/css'
 import Back from '../../components/common/Back.vue'
 export default {
   layout: 'basic',
@@ -204,20 +204,13 @@ export default {
   width: 80%;
   margin: 30px auto;
 
-  // 标题
-  .title {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
   // 内容背景
   .steps-content-bg {
     margin-top: 16px;
     border: 1px dashed #e9e9e9;
     border-radius: 6px;
     background-color: #fafafa;
-    min-height: 200px;
-    height: 450px;
+    min-height: 450px;
 
     .from-content {
       width: 700px;

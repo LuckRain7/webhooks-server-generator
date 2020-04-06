@@ -25,25 +25,25 @@ module.exports = {
 
   // 全局css
   css: [
-    './style/basic.less'
+    './style/basic.less',
     // 'ant-design-vue/dist/antd.css'
     // 按需引入ant-ui
-    // 'ant-design-vue/lib/button/style/css',
-    // 'ant-design-vue/lib/steps/style/css',
-    // 'ant-design-vue/lib/form/style/css',
-    // 'ant-design-vue/lib/input/style/css'
+    'ant-design-vue/lib/button/style/index.css',
+    'ant-design-vue/lib/steps/style/index.css',
+    'ant-design-vue/lib/form/style/index.css',
+    'ant-design-vue/lib/input/style/index.css'
   ],
   /*
    ** Plugins to load before mounting the App
    */
 
-  plugins: ['@/plugins/antd-ui'],
+  plugins: [{src:'@/plugins/antd-ui',ssr:true}],
   /*
    ** Nuxt.js dev-modules
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    // '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module'
   ],
   /*
    ** Nuxt.js modules
@@ -65,5 +65,6 @@ module.exports = {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
-  }
+  },
+  generate: { routes: ['build/new','build/add'] }
 }

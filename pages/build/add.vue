@@ -110,7 +110,7 @@
       <transition enter-active-class=" fadeInLeft">
         <!-- <transition name="test"> -->
         <div v-if="current === 2" class="download ">
-         <pre>{{ code }}</pre>
+          <pre>{{ code }}</pre>
         </div>
       </transition>
       <!-- 服务器构建 -->
@@ -142,10 +142,6 @@
   </div>
 </template>
 <script>
-import 'ant-design-vue/lib/button/style/css'
-import 'ant-design-vue/lib/steps/style/css'
-import 'ant-design-vue/lib/form/style/css'
-import 'ant-design-vue/lib/input/style/css'
 import Back from '../../components/common/Back.vue'
 export default {
   layout: 'basic',
@@ -189,13 +185,14 @@ export default {
       this.form.validateFields(async (err, values) => {
         if (!err) {
           const code = await this.$axios.$post('/api/add', values)
+
           console.log(code)
 
           this.code = code
           this.current++
         }
       })
-    },
+    }
   }
 }
 </script>
@@ -206,12 +203,6 @@ export default {
 .Add {
   width: 80%;
   margin: 30px auto;
-
-  // 标题
-  .title {
-    text-align: center;
-    margin-bottom: 30px;
-  }
 
   // 内容背景
   .steps-content-bg {
@@ -232,7 +223,6 @@ export default {
     .download {
       // width: 500px;
       margin: 40px 30px;
-
     }
 
     .server {

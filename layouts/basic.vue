@@ -10,11 +10,7 @@
 </template>
 
 <style>
-body,
-html {
-  height: 100%;
-  width: 100%;
-}
+
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
