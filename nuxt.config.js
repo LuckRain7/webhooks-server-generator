@@ -4,10 +4,8 @@
  *  Date: 2020-04-04 11:04:02
  */
 module.exports = {
+  // 同构应用程序（服务器端呈现+客户端路由导航等）
   mode: 'universal',
-  /*
-   ** Headers of the page
-   */
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -21,21 +19,19 @@ module.exports = {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  /*
-   ** Customize the progress-bar color
-   */
-  loading: { color: '#fff' },
 
-  // Global CSS
+  // 在页面切换的时候，Nuxt.js 使用内置的加载组件显示加载进度条。
+  loading: { color: '#3b8070' },
+
+  // 全局css
   css: [
+    // './style/animate.min.css', // 过渡动画
     // 'ant-design-vue/dist/antd.css'
     // 按需引入ant-ui
-    // './style/basic.less',
-    './style/animate.min.css', // 过渡动画
-    'ant-design-vue/lib/button/style/css',
-    'ant-design-vue/lib/steps/style/css',
-    'ant-design-vue/lib/form/style/css',
-    'ant-design-vue/lib/input/style/css'
+    // 'ant-design-vue/lib/button/style/css',
+    // 'ant-design-vue/lib/steps/style/css',
+    // 'ant-design-vue/lib/form/style/css',
+    // 'ant-design-vue/lib/input/style/css'
   ],
   /*
    ** Plugins to load before mounting the App
