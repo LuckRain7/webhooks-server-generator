@@ -1,5 +1,5 @@
 <!--
- * @Description: 基础全屏模板
+ * @Description: 自定义基础全屏模板
  * @Author: LuckRain7
  * @Date: 2020-04-04 12:10:26
  -->

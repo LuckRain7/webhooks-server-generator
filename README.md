@@ -40,7 +40,9 @@ Vue.use(Form.Item) //**
 Vue.use(Input)
 ```
 
-配置 css 按需引入
+配置 css 按需引入（全局引入或组件内引入）
+
+- 全局引入
 
 ```js
 # nuxt.config.js
@@ -56,9 +58,22 @@ css: [
   ],
 ```
 
+- 组件内引入
+
+```vue
+<script>
+import 'ant-design-vue/lib/button/style/css'
+import 'ant-design-vue/lib/steps/style/css'
+import 'ant-design-vue/lib/form/style/css'
+import 'ant-design-vue/lib/input/style/css'
+
+export default {}
+</script>
+```
 
 
-## 3.  less
+
+## 3.  使用 Less
 
 > 安装 less less-loader直接使用
 
@@ -208,9 +223,9 @@ async function createZIP(data, filename) {
 
 ## 7.  过渡动画  
 
-> 过渡动画基本与Vue一直
->
-> 项目中涉及  animate.css 的使用
+> 过渡动画基本与Vue一致
+
+### 7-1.  animate.css 的使用
 
 在项目中引入   animate.css 
 
@@ -218,10 +233,6 @@ async function createZIP(data, filename) {
 # nuxt.config.js
 css: [
     './style/animate.min.css', // 过渡动画
-    'ant-design-vue/lib/button/style/css',
-    'ant-design-vue/lib/steps/style/css',
-    'ant-design-vue/lib/form/style/css',
-    'ant-design-vue/lib/input/style/css'
   ],
 ```
 
@@ -232,6 +243,54 @@ css: [
 ```html
 <transition enter-active-class="animated fadeInLeft">内容</transition>
 ```
+
+### 7.2  自定义动画
+
+```vue
+<template>
+	<transition enter-active-class="animated fadeInLeft">内容</transition>
+</template>
+<style>
+  @-webkit-keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInLeft {
+  animation: fadeInLeft 1s infinite;
+  // /*Safari 和 Chrome:*/
+  -webkit-animation: fadeInLeft 1s infinite;
+  animation-iteration-count: 1; //动画次数 一次
+}
+</style>
+```
+
+
+
+
 
 
 

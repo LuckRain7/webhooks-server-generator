@@ -16,7 +16,7 @@
     <!-- 内容 -->
     <div class="steps-content-bg">
       <!-- 表单 1 -->
-      <transition enter-active-class="animated fadeInLeft">
+      <transition enter-active-class="fadeInLeft">
         <div v-if="current === 0" class="from-content">
           <a-form
             :form="form"
@@ -93,8 +93,8 @@
         </div>
       </transition>
       <!-- 代码显示 2 -->
-      <transition enter-active-class="animated fadeInLeft">
-        <!--         leave-active-class="animated fadeOutRight" -->
+      <transition enter-active-class=" fadeInLeft">
+        <!-- <transition name="test"> -->
         <div v-if="current === 1" class="download ">
           <div class="download-title">
             文件已生成 请点击下载
@@ -103,7 +103,7 @@
         </div>
       </transition>
       <!-- 服务器构建 -->
-      <transition enter-active-class="animated fadeInLeft">
+      <transition enter-active-class="fadeInLeft">
         <div v-if="current === 2" class="server ">
           <p>将代码在服务器端进行解压</p>
           <p>解压后进入文件夹</p>
@@ -134,6 +134,11 @@
   </div>
 </template>
 <script>
+import 'ant-design-vue/lib/button/style/css'
+import 'ant-design-vue/lib/steps/style/css'
+import 'ant-design-vue/lib/form/style/css'
+import 'ant-design-vue/lib/input/style/css'
+
 export default {
   layout: 'basic',
   data() {
@@ -189,6 +194,8 @@ export default {
 }
 </script>
 <style scoped lang="less">
+// @import '../assets/css/main.css';
+
 .Build {
   width: 80%;
   margin: 30px auto;
@@ -248,5 +255,41 @@ export default {
 }
 .red {
   color: red;
+}
+// 动画
+
+@-webkit-keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInLeft {
+  animation: fadeInLeft 1s infinite;
+  // /*Safari 和 Chrome:*/
+  -webkit-animation: fadeInLeft 1s infinite;
+  animation-iteration-count: 1; //动画次数 一次
 }
 </style>
