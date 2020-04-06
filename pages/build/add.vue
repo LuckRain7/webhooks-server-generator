@@ -143,6 +143,12 @@
 </template>
 <script>
 import Back from '../../components/common/Back.vue'
+
+import '@/node_modules/ant-design-vue/lib/button/style/index.css'
+import '@/node_modules/ant-design-vue/lib/steps/style/index.css'
+import '@/node_modules/ant-design-vue/lib/form/style/index.css'
+import '@/node_modules/ant-design-vue/lib/input/style/index.css'
+
 export default {
   layout: 'basic',
   components: {

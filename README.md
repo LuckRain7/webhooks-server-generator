@@ -62,10 +62,10 @@ css: [
 
 ```vue
 <script>
-import 'ant-design-vue/lib/button/style/css'
-import 'ant-design-vue/lib/steps/style/css'
-import 'ant-design-vue/lib/form/style/css'
-import 'ant-design-vue/lib/input/style/css'
+import '@/node_modules/ant-design-vue/lib/button/style/index.css'
+import '@/node_modules/ant-design-vue/lib/steps/style/index.css'
+import '@/node_modules/ant-design-vue/lib/form/style/index.css'
+import '@/node_modules/ant-design-vue/lib/input/style/index.css'
 
 export default {}
 </script>
