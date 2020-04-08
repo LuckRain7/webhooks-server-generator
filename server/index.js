@@ -3,27 +3,27 @@
  *  Author: LuckRain7
  *  Date: 2020-04-04 11:04:02
  */
-const path = require('path')
+
 const Koa = require('koa')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 
 // koa模块
-// const Json = require('koa-json')
-// const BodyParser = require('koa-bodyparser')
+const Json = require('koa-json')
+const BodyParser = require('koa-bodyparser')
 const config = require('../nuxt.config.js')
-// const Router = require('./router')
+const Router = require('./router')
 
 const app = new Koa()
 
 // 请求解析
-// app.use(
-//   BodyParser({
-//     enableTypes: ['json', 'form', 'text']
-//   })
-// )
-// app.use(Json())
-// app.use(Router.routes()).use(Router.allowedMethods())
+app.use(
+  BodyParser({
+    enableTypes: ['json', 'form', 'text']
+  })
+)
+app.use(Json())
+app.use(Router.routes()).use(Router.allowedMethods())
 
 // Import and Set Nuxt.js options
 config.dev = app.env !== 'production'
